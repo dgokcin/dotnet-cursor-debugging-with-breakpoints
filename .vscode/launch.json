@@ -1,37 +1,66 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "name": ".NET Core Launch (console)",
-        "type": "coreclr",
-        "request": "launch",
-        "preLaunchTask": "build",
-        "program": "${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll",
-        "args": [],
-        "cwd": "${workspaceFolder}",
-        "stopAtEntry": false,
-        "console": "internalConsole",
-        "internalConsoleOptions": "openOnSessionStart",
-        "logging": {
-          "diagnosticsLog": {
-            "protocolMessages": true
-          }
-        },
-        "pipeTransport": {
-            "pipeCwd": "${workspaceFolder}",
-            "pipeProgram": "bash",
-            "pipeArgs": [
-              "-c",
-            ],
-            "debuggerPath": "${workspaceFolder}/netcoredbg/netcoredbg",
-            "quoteArgs": true
-          },
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Stuck after configuration done
+      "name": ".NET Core Launch (console) pipeProgram:bash",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "logging": {
+        "diagnosticsLog": {
+          "protocolMessages": true
+        }
       },
-      {
-        "name": ".NET Core Attach",
-        "type": "coreclr",
-        "request": "attach",
-        "processId": "${command:pickProcess}"
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "bash",
+        "pipeArgs": ["-c"],
+        // "debuggerPath": "${workspaceFolder}/netcoredbg/netcoredbg",
+        "debuggerPath": "/Users/denizgokcin/.cursor/extensions/muhammad-sammy.csharp-2.31.19/.debugger/netcoredbg/netcoredbg",
+        "quoteArgs": true
       }
-    ]
-  }
+    },
+    {
+      "name": ".NET Core Launch (console) pipeProgram:dotnet",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": ",${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "stopAtEntry": false,
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "logging": {
+        "diagnosticsLog": {
+          "protocolMessages": true
+        }
+      },
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "dotnet",
+        "pipeArgs": [
+          "${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll"
+        ],
+        "quoteArgs": true,
+        // Linter Error Pops-up without the debuggerPath
+        // After adding the path, the linter error is gone Hello, World output visible but no stop at the breakpoint
+        // Pipe program exited unexpectedly with code 0
+        "debuggerPath": "/Users/denizgokcin/.cursor/extensions/muhammad-sammy.csharp-2.31.19/.debugger/netcoredbg/netcoredbg"
+      }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+    }
+  ]
+}
