@@ -22,8 +22,9 @@
         "pipeCwd": "${workspaceFolder}",
         "pipeProgram": "bash",
         "pipeArgs": ["-c"],
+        // neither direct download from Samsung/netcoredbg/releases nor the path coming from the extension works
         // "debuggerPath": "${workspaceFolder}/netcoredbg/netcoredbg",
-        "debuggerPath": "/Users/denizgokcin/.cursor/extensions/muhammad-sammy.csharp-2.31.19/.debugger/netcoredbg/netcoredbg",
+        "debuggerPath": "${userHome}/.cursor/extensions/muhammad-sammy.csharp-2.31.19/.debugger/netcoredbg/netcoredbg",
         "quoteArgs": true
       }
     },
@@ -53,7 +54,7 @@
         // Linter Error Pops-up without the debuggerPath
         // After adding the path, the linter error is gone Hello, World output visible but no stop at the breakpoint
         // Pipe program exited unexpectedly with code 0
-        "debuggerPath": "/Users/denizgokcin/.cursor/extensions/muhammad-sammy.csharp-2.31.19/.debugger/netcoredbg/netcoredbg"
+        "debuggerPath": "${userHome}/.cursor/extensions/muhammad-sammy.csharp-2.31.19/.debugger/netcoredbg/netcoredbg"
       }
     },
     {
