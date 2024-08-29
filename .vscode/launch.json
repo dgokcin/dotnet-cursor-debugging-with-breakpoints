@@ -1,27 +1,9 @@
 {
   "version": "0.2.0",
   "configurations": [
-    // Standard configuration that works on vscode which indicates there is nothing wrong with the code.
+    // Important: Downloading netcoredbg and building it for your architecture is crucial, at least for me. Follow the instructions in README.
     {
-      "name": ".NET Core Launch (console) debugger",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build",
-      "program": "${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "stopAtEntry": false,
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "logging": {
-        "diagnosticsLog": {
-          "protocolMessages": true
-        }
-      }
-    },
-    {
-      // Looks like debugging starts but and breakpoint is pending but nothing happens after that.
-      "name": ".NET Core Debug (M2 Mac)",
+      "name": "netcoredbg",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
@@ -36,74 +18,20 @@
 
         "pipeProgram": "bash",
         "pipeArgs": ["-c"],
-        // not sure what the point of the extension is as neither the debugger from the extension nor the manually downloaded netcoredbg works
-        // "debuggerPath": "${env:HOME}/.cursor/extensions/muhammad-sammy.csharp-2.39.29/.debugger/arm64/netcoredbg/netcoredbg"
-        "debuggerPath": "/opt/netcoredbg/netcoredbg"
+        "debuggerPath": "/usr/local/netcoredbg",
+        "debuggerArgs": [
+          "--interpreter=vscode",
+        ],
+        "quoteArgs": true
       },
       "env": {
         "DOTNET_ENVIRONMENT": "Development"
       },
       "logging": {
         "moduleLoad": false,
-        "engineLogging": true
-      }
-    },
-    {
-      // Stuck after configuration done, nothing happens
-      "name": ".NET Core Launch (console) pipeProgram:bash",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build",
-      "program": "${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "stopAtEntry": false,
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "logging": {
         "diagnosticsLog": {
           "protocolMessages": true
         }
-      },
-      "pipeTransport": {
-        "pipeCwd": "${workspaceFolder}",
-        "pipeProgram": "bash",
-        "pipeArgs": ["-c"],
-        // neither direct download from Samsung/netcoredbg/releases nor the path coming from the extension works
-        // "debuggerPath": "${workspaceFolder}/netcoredbg/netcoredbg",
-        // "debuggerPath": "${userHome}/.cursor/extensions/muhammad-sammy.csharp-2.39.29/.debugger/arm64/netcoredbg/netcoredbg",
-        "debuggerPath": "/opt/netcoredbg/netcoredbg",
-        "quoteArgs": true
-      }
-    },
-    {
-      "name": ".NET Core Launch (console) pipeProgram:dotnet",
-      "type": "coreclr",
-      "request": "launch",
-      "preLaunchTask": "build",
-      "program": ",${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll",
-      "args": [],
-      "cwd": "${workspaceFolder}",
-      "stopAtEntry": false,
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "logging": {
-        "diagnosticsLog": {
-          "protocolMessages": true
-        }
-      },
-      "pipeTransport": {
-        "pipeCwd": "${workspaceFolder}",
-        "pipeProgram": "dotnet",
-        "pipeArgs": [
-          "${workspaceFolder}/bin/Debug/net8.0/dotnet-cursor-debugging-with-breakpoints.dll"
-        ],
-        "quoteArgs": true,
-        // Linter Error Pops-up without the debuggerPath
-        // After adding the path, the linter error is gone Hello, World output visible but no stop at the breakpoint
-        // Pipe program exited unexpectedly with code 0
-        // "debuggerPath": "${userHome}/.cursor/extensions/muhammad-sammy.csharp-2.39.29/.debugger/arm64/netcoredbg/netcoredbg"
-        "debuggerPath": "/opt/netcoredbg/netcoredbg"
       }
     },
     {
