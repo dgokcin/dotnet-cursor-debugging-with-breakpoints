@@ -1,3 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-Console.WriteLine("Lol");
+﻿string message = "Please leave a star if you managed to stop at this breakpoint!";
+
+Console.WriteLine(message);

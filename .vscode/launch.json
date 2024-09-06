@@ -18,10 +18,8 @@
 
         "pipeProgram": "bash",
         "pipeArgs": ["-c"],
-        "debuggerPath": "/usr/local/netcoredbg",
-        "debuggerArgs": [
-          "--interpreter=vscode",
-        ],
+        "debuggerPath": "${HOME}/.local/netcoredbg",
+        "debuggerArgs": ["--interpreter=vscode"],
         "quoteArgs": true
       },
       "env": {
