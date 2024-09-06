@@ -29,15 +29,15 @@ The following instructions will guide you through setting up and using `netcored
 3. [Compile netcoredbg](https://github.com/Samsung/netcoredbg?tab=readme-ov-file#building) for your architecture, setting the install prefix to `$HOME/.local` for avoiding potential permission issues:
 
    ```console
-   user@netcoredbg$ mkdir build
-   user@netcoredbg$ cd build
-   user@build$ CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
+   mkdir build
+   cd build
+   CC=clang CXX=clang++ cmake -DCMAKE_INSTALL_PREFIX=$HOME/.local ..
    ```
 
 4. Install netcoredbg with make:
 
    ```console
-   user@build$ make install
+   make install
    ```
 
 5. Replace the `debuggerPath` in your `launch.json` file with the path to your freshly compiled netcoredbg executable(`/usr/local/bin/netcoredbg` on my machine visible at the bottom of the terminal after running the `make install` command).
