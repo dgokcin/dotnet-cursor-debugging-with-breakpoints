@@ -82,10 +82,6 @@ After ensuring your tools are compatible with arm64, retry the compilation proce
 
 If you encounter issues with the standard compilation process, particularly on M1, M2, or M3 Macs, try the following:
 
-// ... (rest of the existing troubleshooting section remains unchanged)
-
-If you encounter issues with the standard compilation process, particularly on M1, M2, or M3 Macs, try the following:
-
 1. Check the cmake output for architecture detection:
 
    ```console
