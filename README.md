@@ -40,15 +40,49 @@ The following instructions will guide you through setting up and using `netcored
    make install
    ```
 
-5. Replace the `debuggerPath` in your `launch.json` file with the path to your freshly compiled netcoredbg executable(`/usr/local/bin/netcoredbg` on my machine visible at the bottom of the terminal after running the `make install` command).
+5. Replace the `debuggerPath` in your `launch.json` file with the path to your freshly compiled netcoredbg executable, if you have used a different install prefix.
 
 6. Download and install the [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) for Cursor.
 
-7. Set breakpoints in your .NET code and start debugging!
+7. Set a breakpoint at the first line in `Program.cs` and hopefully you'll be able to stop at the breakpoint when you start debugging. 🤞
 
 8. If you can not stop at breakpoints, see the Troubleshooting section below.
 
 ## Troubleshooting
+
+If the steps above do not work for you like they did not for me, there may be architecture issues with the netcoredbg build. Make sure that the cmake, clang, and clang++ in your system are compatible with the arm64 architecture. You can check this by executing the following commands:
+
+```bash
+file $(which clang++)
+file $(which clang)
+file $(which cmake)
+```
+
+For example, on an ARM64 system, you should see output similar to:
+
+```console
+/usr/bin/clang++: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64e:Mach-O 64-bit executable arm64e]
+/usr/bin/clang++ (for architecture x86_64):     Mach-O 64-bit executable x86_64
+/usr/bin/clang++ (for architecture arm64e):     Mach-O 64-bit executable arm64e
+
+/usr/bin/clang: Mach-O universal binary with 2 architectures: [x86_64:Mach-O 64-bit executable x86_64] [arm64e:Mach-O 64-bit executable arm64e]
+/usr/bin/clang (for architecture x86_64):       Mach-O 64-bit executable x86_64
+/usr/bin/clang (for architecture arm64e):       Mach-O 64-bit executable arm64e
+
+/opt/homebrew/bin/cmake: Mach-O 64-bit executable arm64
+```
+
+If arm64 is not seen in the output, you may need to upgrade your LLVM installation. On macOS with Homebrew, you can use the following command:
+
+```bash
+arch -arm64 brew upgrade llvm
+```
+
+After ensuring your tools are compatible with arm64, retry the compilation process for netcoredbg as described in the setup instructions.
+
+If you encounter issues with the standard compilation process, particularly on M1, M2, or M3 Macs, try the following:
+
+// ... (rest of the existing troubleshooting section remains unchanged)
 
 If you encounter issues with the standard compilation process, particularly on M1, M2, or M3 Macs, try the following:
 
