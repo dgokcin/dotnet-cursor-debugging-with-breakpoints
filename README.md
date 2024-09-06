@@ -83,14 +83,14 @@ If you encounter issues with the standard compilation process, particularly on M
 
 2. If the architecture is not correctly detected (e.g., shows as x86_64 on an ARM64 machine), use the following command with additional flags to force the correct architecture:
 
-   > [!NOTE]
-   > The following commands include extra flags that were crucial for making my configuration work on my M2 Mac, especially when the system wasn't being correctly detected as ARM64 at the start of the cmake command(possibly due to lingering x86_64 components from an Intel backup):
-   > - `-DCMAKE_SYSTEM_PROCESSOR=arm64`: Specifies the target system processor as ARM64.
-   > - `-DCMAKE_OSX_ARCHITECTURES=arm64`: Sets the target architecture for macOS builds.
-   > - `-DCMAKE_APPLE_SILICON_PROCESSOR=arm64`: Ensures ARM64 is used for Apple Silicon.
-   > - `-DCMAKE_INSTALL_PREFIX=$HOME/.local`: Sets the installation prefix to avoid potential permission issues.
-   >
-   > Without these flags, the system may not be correctly detected as ARM64, which can lead to compilation issues.
+> [!NOTE]
+> The following commands include extra flags that were crucial for making my configuration work on my M2 Mac, especially when the system wasn't being correctly detected as ARM64 at the start of the cmake command(possibly due to lingering x86_64 components from an Intel backup):
+> - `-DCMAKE_SYSTEM_PROCESSOR=arm64`: Specifies the target system processor as ARM64.
+> - `-DCMAKE_OSX_ARCHITECTURES=arm64`: Sets the target architecture for macOS builds.
+> - `-DCMAKE_APPLE_SILICON_PROCESSOR=arm64`: Ensures ARM64 is used for Apple Silicon.
+> - `-DCMAKE_INSTALL_PREFIX=$HOME/.local`: Sets the installation prefix to avoid potential permission issues.
+>
+> Without these flags, the system may not be correctly detected as ARM64, which can lead to compilation issues.
 
    ```console
    user@netcoredbg$ mkdir build
