@@ -1,4 +1,7 @@
 # dotnet-cursor-debugging-with-breakpoints
+> [!NOTE]
+> This repository is now archived as Cursor has released their in-house extensions that support .NET debugging out of the box. You can find more information about the new extensions in the [Cursor forum post](https://forum.cursor.com/t/new-in-house-extensions-c-c-ssh-devcontainers-wsl-python/94531). This repository is kept for historical purposes and for users who might still need to use netcoredbg for specific use cases.
+
 
 ![Debugging in action](./img/debugging-in-action.png)
 
